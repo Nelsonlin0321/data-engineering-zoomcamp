@@ -25,6 +25,7 @@ Which tag has the following text? - *Automatically remove the container when it 
 - `--rmc`
 - `--rm`
 
+Answer: --rm
 
 ## Question 2. Understanding docker first run 
 
@@ -37,6 +38,9 @@ What is version of the package *wheel* ?
 - 1.0.0
 - 23.0.1
 - 58.1.0
+
+Answer: docker run -it --entrypoint bash python:3.9
+- 0.42.0
 
 
 # Prepare Postgres
@@ -66,6 +70,8 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 - 15859
 - 89009
 
+Answer: 15612
+
 ## Question 4. Largest trip for each day
 
 Which was the pick up day with the largest trip distance
@@ -75,6 +81,9 @@ Use the pick up time for your calculations.
 - 2019-09-16
 - 2019-09-26
 - 2019-09-21
+
+Answer:
+- 2019-09-26
 
 
 ## Question 5. The number of passengers
@@ -88,6 +97,8 @@ Which were the 3 pick up Boroughs that had a sum of total_amount superior to 500
 - "Bronx" "Manhattan" "Queens" 
 - "Brooklyn" "Queens" "Staten Island"
 
+Answer:
+- "Brooklyn" "Manhattan" "Queens"
 
 ## Question 6. Largest tip
 
@@ -101,6 +112,8 @@ Note: it's not a typo, it's `tip` , not `trip`
 - JFK Airport
 - Long Island City/Queens Plaza
 
+Answer:
+- JFK Airport
 
 
 ## Terraform
@@ -124,6 +137,96 @@ terraform apply
 
 Paste the output of this command into the homework submission form.
 
+
+```sh
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_bigquery_dataset.demo_dataset will be created
+  + resource "google_bigquery_dataset" "demo_dataset" {
+      + creation_time              = (known after apply)
+      + dataset_id                 = "demo_dataset"
+      + default_collation          = (known after apply)
+      + delete_contents_on_destroy = false
+      + effective_labels           = (known after apply)
+      + etag                       = (known after apply)
+      + id                         = (known after apply)
+      + is_case_insensitive        = (known after apply)
+      + last_modified_time         = (known after apply)
+      + location                   = "ASIA-EAST2"
+      + max_time_travel_hours      = (known after apply)
+      + project                    = "dtc-de-course-411808"
+      + self_link                  = (known after apply)
+      + storage_billing_model      = (known after apply)
+      + terraform_labels           = (known after apply)
+    }
+
+  # google_storage_bucket.demo-bucket will be created
+  + resource "google_storage_bucket" "demo-bucket" {
+      + effective_labels            = (known after apply)
+      + force_destroy               = true
+      + id                          = (known after apply)
+      + location                    = "ASIA-EAST2"
+      + name                        = "terraform-dtc-de-bucket"
+      + project                     = (known after apply)
+      + public_access_prevention    = (known after apply)
+      + self_link                   = (known after apply)
+      + storage_class               = "STANDARD"
+      + terraform_labels            = (known after apply)
+      + uniform_bucket_level_access = (known after apply)
+      + url                         = (known after apply)
+
+      + lifecycle_rule {
+          + action {
+              + type = "AbortIncompleteMultipartUpload"
+            }
+          + condition {
+              + age                   = 1
+              + matches_prefix        = []
+              + matches_storage_class = []
+              + matches_suffix        = []
+              + with_state            = (known after apply)
+            }
+        }
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+google_bigquery_dataset.demo_dataset: Creating...
+google_storage_bucket.demo-bucket: Creating...
+google_bigquery_dataset.demo_dataset: Creation complete after 2s [id=projects/dtc-de-course-411808/datasets/demo_dataset]
+google_storage_bucket.demo-bucket: Still creating... [10s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [20s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [30s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [40s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [50s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m0s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m10s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m20s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m30s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m40s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [1m50s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [2m0s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [2m10s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [2m20s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [2m30s elapsed]
+google_storage_bucket.demo-bucket: Still creating... [2m40s elapsed]
+
+google_storage_bucket.demo-bucket: Still creating... [2m50s elapsed]
+
+google_storage_bucket.demo-bucket: Creation complete after 2m58s [id=terraform-dtc-de-bucket]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+```
 
 ## Submitting the solutions
 

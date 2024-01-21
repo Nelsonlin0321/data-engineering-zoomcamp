@@ -15,3 +15,5 @@ serving_dir
 .ipynb_checkpoints/
 !week_6_stream_processing/avro_example/data/rides.csv
 *secret.json
+cohorts/2024/01-docker-terraform/green_tripdata_2019-09.csv
+cohorts/2024/01-docker-terraform/taxi+_zone_lookup.csv
